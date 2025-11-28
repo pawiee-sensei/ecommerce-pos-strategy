@@ -1,0 +1,40 @@
+<div style="
+  background:white;
+  padding:22px;
+  border-radius:10px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.06);
+">
+  <h2 style="margin-top:0; font-size:20px; font-weight:600;">
+    Dashboard Overview
+  </h2>
+
+  <p style="color:#6b7280; font-size:14px;">
+    Hello <strong><%= user.username %></strong>, welcome back.
+  </p>
+
+  <div style="
+    margin-top:20px;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap:16px;
+  ">
+    
+    <div style="padding:20px; background:#f9fafb; border-radius:10px;">
+      <h3 style="margin:0; font-size:16px;">Products</h3>
+      <p style="margin:6px 0 0; color:#6b7280;">Manage inventory items</p>
+    </div>
+
+    <div style="padding:20px; background:#f9fafb; border-radius:10px;">
+      <h3 style="margin:0; font-size:16px;">POS</h3>
+      <p style="margin:6px 0 0; color:#6b7280;">Process transactions</p>
+    </div>
+
+    <div style="padding:20px; background:#f9fafb; border-radius:10px;">
+      <h3 style="margin:0; font-size:16px;">Strategy Engine</h3>
+      <p style="margin:6px 0 0; color:#6b7280;">View business insights</p>
+    </div>
+
+  </div>
+</div>
+
+

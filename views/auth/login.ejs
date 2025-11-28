@@ -1,0 +1,215 @@
+<!-- views/auth/login.ejs -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sign in — Admin</title>
+
+  <style>
+    /* Minimal professional styling */
+    :root{
+      --bg:#f6f8fa;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#0b5cff;
+      --danger:#e11d48;
+      --radius:12px;
+      --shadow: 0 6px 20px rgba(17,24,39,0.08);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg, #f8fafc 0%, var(--bg) 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      color:#0f172a;
+    }
+
+    .wrap {
+      width:100%;
+      max-width:980px;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:32px;
+      align-items:center;
+    }
+
+    .brand {
+      padding:28px;
+      border-radius:var(--radius);
+      background:transparent;
+    }
+    .brand h1{
+      margin:0 0 8px 0;
+      font-size:22px;
+      letter-spacing:-0.2px;
+    }
+    .brand p { margin:0; color:var(--muted); font-size:14px; line-height:1.5 }
+
+    .card {
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+      width:100%;
+    }
+
+    .logo {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+    }
+    .logo .mark {
+      width:44px;
+      height:44px;
+      border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),#06b6d4);
+      display:inline-block;
+      box-shadow: 0 6px 18px rgba(11,92,255,0.12), inset 0 -6px 16px rgba(255,255,255,0.08);
+    }
+    .muted { color:var(--muted); font-size:13px; }
+
+    form { margin-top:18px; }
+    label { display:block; margin-bottom:6px; font-size:13px; color:#111827 }
+    input[type="text"], input[type="password"] {
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid #e6e9ef;
+      background:transparent;
+      outline:none;
+      font-size:15px;
+      box-sizing:border-box;
+    }
+    .input-row { margin-bottom:14px; }
+    .actions { display:flex; gap:12px; align-items:center; margin-top:12px; }
+    button.primary {
+      background:var(--accent);
+      color:white;
+      border:none;
+      padding:10px 14px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:600;
+      box-shadow: 0 6px 18px rgba(11,92,255,0.12);
+    }
+    button.ghost {
+      background:transparent;
+      border:1px solid #e6e9ef;
+      padding:10px 14px;
+      border-radius:10px;
+      cursor:pointer;
+      color:#111827;
+    }
+    .error {
+      background:#fff5f5;
+      color:var(--danger);
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid rgba(225,29,72,0.08);
+      margin-bottom:12px;
+      font-size:13px;
+    }
+    .notice {
+      background:#f0f9ff;
+      color:#0369a1;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid rgba(3,105,161,0.06);
+      margin-bottom:12px;
+      font-size:13px;
+    }
+
+    .foot {
+      margin-top:16px;
+      font-size:13px;
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    @media (max-width: 880px) {
+      .wrap { grid-template-columns: 1fr; padding:12px; }
+      .brand { order:2; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <a class="logo" href="/">
+        <span class="mark" aria-hidden="true"></span>
+        <div>
+          <h1>Commerce Control</h1>
+          <p class="muted">Admin dashboard — Inventory · POS · Strategy</p>
+        </div>
+      </a>
+
+      <div style="margin-top:20px">
+        <p class="muted">Sign in with your administrative account to access the dashboard and management panels.</p>
+      </div>
+    </div>
+
+    <div class="card" role="main" aria-labelledby="login-title">
+      <h2 id="login-title" style="margin:0 0 6px 0; font-size:18px">Sign in to your account</h2>
+      <p class="muted" style="margin:0 0 14px 0">Enter your credentials to continue.</p>
+
+      <% if (typeof _defaultAdminCreated !== 'undefined' && _defaultAdminCreated) { %>
+        <div class="notice">
+          Default admin created: <strong>admin@example.com</strong> — password: <strong>12345</strong>.
+          Please change this password after first login.
+        </div>
+      <% } %>
+
+      <% if (error) { %>
+        <div class="error"><%= error %></div>
+      <% } %>
+
+      <% if (message) { %>
+        <div class="notice"><%= message %></div>
+      <% } %>
+
+      <form method="POST" action="/login" novalidate>
+        <div class="input-row">
+          <label for="username">Email</label>
+          <input id="username" name="username" type="text" autocomplete="username"
+                 placeholder="you@company.com" value="<%= (typeof username !== 'undefined' ? username : '') %>" required />
+        </div>
+
+        <div class="input-row">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" required />
+        </div>
+
+        <div class="foot">
+          <div style="display:flex; gap:12px; align-items:center">
+            <label style="display:inline-flex; gap:8px; align-items:center; cursor:pointer; font-size:13px;">
+              <input type="checkbox" name="remember" style="transform:scale(1.05)"/>
+              <span class="muted">Remember</span>
+            </label>
+          </div>
+
+          <div style="font-size:13px">
+            <a href="#" class="muted" onclick="alert('Password reset not implemented yet'); return false;">Forgot?</a>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="primary">Sign in</button>
+          <button type="button" class="ghost" onclick="location.href='/'">Back</button>
+        </div>
+      </form>
+
+      <div style="margin-top:18px; font-size:12px; color:var(--muted)">
+        By signing in you agree to administrative access policies.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
