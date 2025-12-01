@@ -8,8 +8,12 @@ async function dashboardPanel(req, res) {
 }
 
 async function productsPanel(req, res) {
-  return res.send(`<div style="padding:20px;">Products panel coming soon...</div>`);
+  return res.render('admin/panels/products', {
+    session: req.session,
+    user: req.session.user
+  });
 }
+
 
 async function posPanel(req, res) {
   return res.send(`<div style="padding:20px;">POS panel coming soon...</div>`);

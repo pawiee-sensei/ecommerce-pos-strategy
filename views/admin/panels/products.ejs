@@ -1,0 +1,142 @@
+<div class="panel-wrapper">
+
+  <h2 class="panel-title">Products</h2>
+  <p class="panel-subtitle">Manage inventory items, search, filter and update product details.</p>
+
+  <!-- SEARCH + FILTER BAR -->
+  <div class="toolbar">
+    <input type="text" class="input" placeholder="Search products..." />
+    <select class="input">
+      <option value="">All Categories</option>
+      <option>Food</option>
+      <option>Drinks</option>
+      <option>Accessories</option>
+    </select>
+    <button class="btn">Add New Product</button>
+  </div>
+
+  <!-- TABLE CONTAINER -->
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Product</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Status</th>
+          <th width="120">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="img-placeholder"></div></td>
+          <td>Sample Product</td>
+          <td>Category A</td>
+          <td>₱199.00</td>
+          <td>12</td>
+          <td><span class="status good">🟢 Good</span></td>
+          <td>
+            <button class="btn-sm">Edit</button>
+            <button class="btn-sm danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<style>
+  .panel-wrapper {
+    background:white;
+    padding:24px;
+    border-radius:12px;
+    box-shadow:0 4px 14px rgba(0,0,0,0.06);
+  }
+
+  .panel-title {
+    margin:0;
+    font-size:20px;
+    font-weight:600;
+  }
+
+  .panel-subtitle {
+    margin-top:4px;
+    color:#6b7280;
+    font-size:14px;
+  }
+
+  .toolbar {
+    margin-top:20px;
+    display:flex;
+    gap:12px;
+  }
+
+  .input {
+    padding:10px 14px;
+    border:1px solid #d1d5db;
+    border-radius:8px;
+    font-size:14px;
+  }
+
+  .btn {
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
+  }
+
+  .table-card {
+    margin-top:20px;
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid #e5e7eb;
+  }
+
+  table {
+    width:100%;
+    border-collapse:collapse;
+    font-size:14px;
+  }
+
+  th {
+    background:#f9fafb;
+    text-align:left;
+    padding:12px 16px;
+    color:#374151;
+    font-weight:600;
+  }
+
+  td {
+    padding:12px 16px;
+    border-top:1px solid #e5e7eb;
+  }
+
+  .img-placeholder {
+    width:40px;
+    height:40px;
+    background:#e5e7eb;
+    border-radius:8px;
+  }
+
+  .btn-sm {
+    background:#f3f4f6;
+    padding:6px 10px;
+    border-radius:6px;
+    border:none;
+    cursor:pointer;
+    font-size:12px;
+  }
+
+  .btn-sm:hover { background:#e5e7eb;}
+
+  .danger { background:#fee2e2; color:#b91c1c; }
+  .danger:hover { background:#fecaca; }
+
+  .status.good { font-weight:600; }
+</style>

@@ -7,10 +7,18 @@
     "dev": "nodemon app.js",
     "start": "node app.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pawiee-sensei/ecommerce-pos-strategy.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/pawiee-sensei/ecommerce-pos-strategy/issues"
+  },
+  "homepage": "https://github.com/pawiee-sensei/ecommerce-pos-strategy#readme",
   "dependencies": {
     "bcryptjs": "^3.0.3",
     "connect-flash": "^0.1.1",
