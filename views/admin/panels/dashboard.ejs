@@ -1,40 +1,213 @@
 <div style="
-  background:white;
-  padding:22px;
-  border-radius:10px;
-  box-shadow:0 4px 14px rgba(0,0,0,0.06);
+  display:flex;
+  flex-direction:column;
+  gap:24px;
 ">
-  <h2 style="margin-top:0; font-size:20px; font-weight:600;">
-    Dashboard Overview
-  </h2>
 
-  <p style="color:#6b7280; font-size:14px;">
-    Hello <strong><%= user.username %></strong>, welcome back.
-  </p>
+  <!-- HEADER -->
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <div>
+      <h1 style="margin:0; font-size:22px; font-weight:600;">Dashboard Overview</h1>
+      <p style="margin:6px 0 0; font-size:14px; color:#6b7280;">Welcome back, <strong><%= user.username %></strong></p>
+    </div>
 
+    <div>
+      <button style="
+        padding:10px 14px;
+        font-size:14px;
+        border:none;
+        background:#2563eb;
+        color:white;
+        border-radius:8px;
+        cursor:pointer;
+      ">Generate Report</button>
+    </div>
+  </div>
+
+
+  <!-- METRIC CARDS -->
   <div style="
-    margin-top:20px;
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap:16px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap:18px;
   ">
-    
-    <div style="padding:20px; background:#f9fafb; border-radius:10px;">
-      <h3 style="margin:0; font-size:16px;">Products</h3>
-      <p style="margin:6px 0 0; color:#6b7280;">Manage inventory items</p>
+
+    <!-- SALES -->
+    <div style="
+      background:white;
+      padding:18px;
+      border-radius:10px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.05);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    ">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <svg width="22" height="22" stroke="#2563eb" fill="none" stroke-width="1.5">
+          <path d="M4 14l4 4 12-12" />
+        </svg>
+        <span style="font-size:14px; color:#6b7280;">Daily Sales</span>
+      </div>
+      <div style="font-size:26px; font-weight:700;">₱0.00</div>
     </div>
 
-    <div style="padding:20px; background:#f9fafb; border-radius:10px;">
-      <h3 style="margin:0; font-size:16px;">POS</h3>
-      <p style="margin:6px 0 0; color:#6b7280;">Process transactions</p>
+    <!-- ORDERS -->
+    <div style="
+      background:white;
+      padding:18px;
+      border-radius:10px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.05);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    ">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <svg width="22" height="22" stroke="#2563eb" fill="none" stroke-width="1.5">
+          <circle cx="11" cy="11" r="8" />
+        </svg>
+        <span style="font-size:14px; color:#6b7280;">Orders Today</span>
+      </div>
+      <div style="font-size:26px; font-weight:700;">0</div>
     </div>
 
-    <div style="padding:20px; background:#f9fafb; border-radius:10px;">
-      <h3 style="margin:0; font-size:16px;">Strategy Engine</h3>
-      <p style="margin:6px 0 0; color:#6b7280;">View business insights</p>
+    <!-- PRODUCTS -->
+    <div style="
+      background:white;
+      padding:18px;
+      border-radius:10px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.05);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    ">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <svg width="22" height="22" stroke="#2563eb" fill="none" stroke-width="1.5">
+          <rect x="3" y="4" width="16" height="14" rx="2" />
+          <path d="M3 10h16" />
+        </svg>
+        <span style="font-size:14px; color:#6b7280;">Total Products</span>
+      </div>
+      <div style="font-size:26px; font-weight:700;">0</div>
+    </div>
+
+    <!-- LOW STOCK -->
+    <div style="
+      background:white;
+      padding:18px;
+      border-radius:10px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.05);
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    ">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <svg width="22" height="22" stroke="#e11d48" fill="none" stroke-width="1.5">
+          <path d="M12 3l9 16H3l9-16z" />
+          <circle cx="12" cy="14" r="1" />
+          <path d="M12 9v2" />
+        </svg>
+        <span style="font-size:14px; color:#6b7280;">Low Stock</span>
+      </div>
+      <div style="font-size:26px; font-weight:700; color:#e11d48;">0</div>
     </div>
 
   </div>
+
+
+  <!-- RECENT ACTIVITY -->
+  <div style="
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.05);
+  ">
+    <h2 style="margin:0 0 12px; font-size:18px; font-weight:600;">
+      Recent Activity
+    </h2>
+
+    <p style="margin:0; font-size:14px; color:#6b7280;">
+      No recent activities yet.
+    </p>
+  </div>
+
+
+  <!-- SYSTEM SHORTCUTS -->
+  <div style="
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.05);
+  ">
+    <h2 style="margin:0 0 12px; font-size:18px; font-weight:600;">
+      Quick Access
+    </h2>
+
+    <div style="
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap:16px;
+      margin-top:12px;
+    ">
+
+      <a href="#" data-panel="products" style="
+        text-decoration:none;
+        color:inherit;
+        padding:14px;
+        border-radius:10px;
+        background:#f9fafb;
+        display:flex;
+        gap:10px;
+        align-items:center;
+        transition:.2s;
+      " onmouseover="this.style.background='#eef2ff'"
+        onmouseout="this.style.background='#f9fafb'">
+        <svg width="20" height="20" stroke="#2563eb" fill="none" stroke-width="1.5">
+          <rect x="3" y="4" width="14" height="12" rx="2" />
+          <path d="M3 10h14" />
+        </svg>
+        <span>Manage Products</span>
+      </a>
+
+      <a href="#" data-panel="pos" style="
+        text-decoration:none;
+        color:inherit;
+        padding:14px;
+        border-radius:10px;
+        background:#f9fafb;
+        display:flex;
+        gap:10px;
+        align-items:center;
+        transition:.2s;
+      " onmouseover="this.style.background='#eef2ff'"
+        onmouseout="this.style.background='#f9fafb'">
+        <svg width="20" height="20" stroke="#2563eb" fill="none" stroke-width="1.5">
+          <circle cx="7" cy="15" r="1.4" />
+          <circle cx="14" cy="15" r="1.4" />
+          <path d="M3 6h2l2 7h8l2-5H7" />
+        </svg>
+        <span>Open POS</span>
+      </a>
+
+      <a href="#" data-panel="strategy" style="
+        text-decoration:none;
+        color:inherit;
+        padding:14px;
+        border-radius:10px;
+        background:#f9fafb;
+        display:flex;
+        gap:10px;
+        align-items:center;
+        transition:.2s;
+      " onmouseover="this.style.background='#eef2ff'"
+        onmouseout="this.style.background='#f9fafb'">
+        <svg width="20" height="20" stroke="#2563eb" fill="none" stroke-width="1.5">
+          <path d="M4 17h16" />
+          <path d="M4 11l6-5 4 3 6-7" />
+        </svg>
+        <span>Strategy Engine</span>
+      </a>
+
+    </div>
+  </div>
+
 </div>
-
-
